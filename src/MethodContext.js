@@ -8,10 +8,10 @@ import { EventEmitter } from './EventEmitter';
  */
 export const obj = {
     count: 0,
-    callback() {
-        this.count += 1;
-    },
     subscribe() {
+        this.callback = () => {
+            this.count += 1;
+        };
         EventEmitter.on('click', this.callback);
     },
     unsubscribe() {
